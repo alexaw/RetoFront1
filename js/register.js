@@ -1,5 +1,4 @@
 function saveUser(){
-    debugger
     var name = $.trim($("#name").val());
     var email = $.trim($("#email").val());
     var password = $.trim($("#password").val());
@@ -16,16 +15,16 @@ function saveUser(){
             $.ajax({
                 url: 'http://localhost:8080/api/user/new',
                 data: JSON.stringify({
-                    email: $("#email").val(),
-                    password: $("#password").val(),
-                    name: $("#name").val()
+                    "email": email,
+                    "password": password,
+                    "name": name
                 }),
                 type: 'POST',
                 contentType: 'application/json',
                 //dataType: 'json',
 
                 error : function(result){
-                    alert("Usuario no registrado")
+                    alert("Usuario no registrado");
                     console.log(result);
                 },
                 success:function(respuesta){
@@ -42,9 +41,9 @@ function saveUser(){
                         $('#name').focus();    */             
                 }
             });
-        }        
+        }  
+        return false;      
     }
-    return false;
 }
 
 function login(){
@@ -67,11 +66,12 @@ function login(){
                     if(respuesta.id == null){
                         alert("No exite un usuario con estos datos")
                     } else {
-                        alert("Bienvenido" + respuesta.name);
+                        alert("Bienvenido " + respuesta.name);
                     }   
                     $(':input').val('');
                     $('#email').focus();                 
             }
-        })
+        });
+        return false;
     }
 }

@@ -2,15 +2,18 @@ body {
     /*background-color: rgba(96, 32, 147, 70%);*/
     /*background-color: #96eeb9;*/
     /*background-color: #A73489;*/
-    background-image: url("/img/skate.jpg");
+    background-image: url("/img/cleaning.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
 #cf {
-    background-color: #1935b4;
-    /*border-radius: 1px solid red;*/
+    /*background-color: #1935b4;
+    border-radius: 1px solid red;*/
+    background: rgba(17, 25, 54, 0.9);
 }
+
 /*a:hover {
     color: black;
     /*background-color: #96eeb9
 }*/
+

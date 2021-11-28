@@ -1,4 +1,5 @@
 function saveUser(){
+    debugger
     var name = $.trim($("#name").val());
     var email = $.trim($("#email").val());
     var password = $.trim($("#password").val());
@@ -8,37 +9,37 @@ function saveUser(){
         if(password != password_conf){
             alert("Las contraseña no coincide")
             $("#password_conf").focus();
-        } if(email == email){
+        /*} if(email == email){
             alert("El correo ya existe. Ingrese otro correo")
-            
-        }
-        else{
+        */    
+        }else{
             $.ajax({
-                url: 'http://150.230.91.74:8080/api/user/new',
+                url: 'http://localhost:8080/api/user/new',
                 data: JSON.stringify({
-                    "#email":email,
-                    "#password":password,
-                    "#name":name
+                    email: $("#email").val(),
+                    password: $("#password").val(),
+                    name: $("#name").val()
                 }),
                 type: 'POST',
                 contentType: 'application/json',
-                dataType: 'json',
+                //dataType: 'json',
 
                 error : function(result){
                     alert("Usuario no registrado")
                     console.log(result);
                 },
                 success:function(respuesta){
-                    console.log(respuesta);
+                    /*console.log(respuesta);
                         if(respuesta.id == null){
                             alert("No fue posible crear la cuenta")
                             $("#name").focus();
                             $("#email").focus();
-                        } else {
+                        } else {*/
                             alert("La cuenta se creo de manera correcta");
-                        }   
+                            $("#form_id").trigger("reset");
+                        /*}   
                         $(':input').val('');
-                        $('#name').focus();                 
+                        $('#name').focus();    */             
                 }
             });
         }        
@@ -51,7 +52,8 @@ function login(){
     var password = $.trim($("#password").val());
     if(email != "" && password != ""){
         $.ajax({
-            url: 'http://150.230.91.74:8080/api/user/' + email +'/'+ password,
+            //url: 'http://150.230.91.74:8080/api/user/' + email +'/'+ password,
+            url: 'http://localhost:8080/api/user/' + email +'/'+ password,
             type: 'GET',
             contentType: 'application/json',
             dataType: 'json',
